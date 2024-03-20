@@ -5,10 +5,6 @@
       tags:
         - v*
   jobs:
-    ci:
-      name: Run ci
-      uses: ./.github/workflows/ci.yml
-
     publish_main:
       name: Publish main branch artefacts
       runs-on: ubuntu-latest
