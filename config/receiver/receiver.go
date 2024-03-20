@@ -14,6 +14,8 @@
 package receiver
 
 import (
+	"fmt"
+
 	"github.com/go-kit/log"
 
 	commoncfg "github.com/prometheus/common/config"
@@ -81,6 +83,7 @@ func BuildReceiverIntegrations(nc config.Receiver, tmpl *template.Template, logg
 		add("sns", i, c, func(l log.Logger) (notify.Notifier, error) { return sns.New(c, tmpl, l, httpOpts...) })
 	}
 	for i, c := range nc.TelegramConfigs {
+		fmt.Println(c)
 		add("telegram", i, c, func(l log.Logger) (notify.Notifier, error) { return telegram.New(c, tmpl, l, httpOpts...) })
 	}
 	for i, c := range nc.DiscordConfigs {
